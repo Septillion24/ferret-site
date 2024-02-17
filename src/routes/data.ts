@@ -6,13 +6,23 @@ export interface FerretData {
 
 export const ferrets: FerretData[] = [
 	{
-		src:"/Noodle.jpg",
+		src:"/Noodle.png",
         name:"Noodle",
         birthdate:"2/11/2024"
 	},
 	{
-		src:"/Noodle.jpg",
-        name:"Noodle",
+		src:"/Bear.png",
+        name:"Bear",
+        birthdate:"2/11/2024"
+	},
+	{
+		src:"/Willow.png",
+        name:"Willow",
+        birthdate:"2/11/2024"
+	},
+	{
+		src:"/Coco.png",
+        name:"Coco",
         birthdate:"2/11/2024"
 	}
 ];
