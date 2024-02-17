@@ -14,7 +14,7 @@
 			{name}
 		</h1>
         <p>{birthdate}</p>
-		<p>nooble is a good boy</p>
+		<p>{name} is a good boy</p>
 	</div>
 </div>
 
@@ -30,11 +30,18 @@
 		color: rgba(255, 255, 255, 0.9);
 		border-radius: 20px;
 	}
+    .mainCard:hover .content{
+        opacity: 1;
+        transition: 1s;
+        // transition-timing-function: cubic-bezier(1,0,.88,.27);
+        transition-delay: 0.2s;
+    }
 	.content {
 		position: absolute;
 		top: 0px;
 		width: 100%;
         height:100%;
+        opacity: 0;
 	}
     .content>h1{
         text-align: center;
@@ -46,10 +53,14 @@
 		margin: auto;
 		height: 100%;
 		width: auto;
-		filter: blur(5px);
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
 		opacity: 0.8;
+        transition: 0.2s;
 	}
+    .mainCard:hover img{
+        filter: blur(5px);
+        transition: 0.5s;
+    }
 </style>
