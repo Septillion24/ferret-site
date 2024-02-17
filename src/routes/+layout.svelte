@@ -6,7 +6,6 @@
 	};
     
 </script>
-
 <header>
 	{#each Object.entries(paths) as [name, route]}
 		<a href={route} class={$page.url.pathname === route ? 'active' : 'inactive'}>{name}</a>

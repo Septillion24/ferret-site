@@ -14,22 +14,22 @@
 			{name}
 		</h1>
         <p>{birthdate}</p>
-		<p>{name} is a good boy</p>
+		<p>{name} is a good {data.male ? "boy" : "girl"}</p>
 	</div>
 </div>
 
 <style lang="scss">
 	.mainCard {
 		aspect-ratio: 2/3;
-		width: 500px;
-		height: 750px;
-		position: relative;
+		width: inherit;
+		position: absolute;
 		overflow: hidden;
 		background-color: black;
 		font-family: Arial, Helvetica, sans-serif;
 		color: rgba(255, 255, 255, 0.9);
 		border-radius: 20px;
-	}
+        opacity: inherit;
+    }
     .mainCard:hover .content{
         opacity: 1;
         transition: 1s;
