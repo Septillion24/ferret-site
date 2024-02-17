@@ -1,0 +1,55 @@
+<script lang="ts">
+
+    import type { FerretData } from "./data";
+    export let data: FerretData;
+    let src: string = data.src;
+	let name: string = data.name;
+    let birthdate: string = data.birthdate;
+</script>
+
+<div class="mainCard">
+	<img {src} alt="" />
+	<div class="content">
+		<h1>
+			{name}
+		</h1>
+        <p>{birthdate}</p>
+		<p>nooble is a good boy</p>
+	</div>
+</div>
+
+<style lang="scss">
+	.mainCard {
+		aspect-ratio: 2/3;
+		width: 500px;
+		height: 750px;
+		position: relative;
+		overflow: hidden;
+		background-color: black;
+		font-family: Arial, Helvetica, sans-serif;
+		color: rgba(255, 255, 255, 0.9);
+		border-radius: 20px;
+	}
+	.content {
+		position: absolute;
+		top: 0px;
+		width: 100%;
+        height:100%;
+	}
+    .content>h1{
+        text-align: center;
+    }
+    .content>p{
+        margin-left:40px;
+    }
+	img {
+		margin: auto;
+		height: 100%;
+		width: auto;
+		filter: blur(5px);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		opacity: 0.8;
+	}
+</style>
