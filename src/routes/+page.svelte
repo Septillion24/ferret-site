@@ -40,13 +40,13 @@
 		class="leftCard {currentFerretIndex === 0 ? 'emptyDeck' : 'fullDeck'}"
 		bind:this={ferretDeckLeft}
 	>
-		<img src="/ferret-back-blue.png" alt="" class="ferretDeck" />
+		<img src="/src/static/ferret-back-blue.png" alt="" class="ferretDeck" />
 	</div>
 	<div
 		class="rightCard {currentFerretIndex === numFerrets - 1 ? 'emptyDeck' : 'fullDeck'}"
 		bind:this={ferretDeckRight}
 	>
-		<img src="/ferret-back-red.png" alt="" class="ferretDeck" />
+		<img src="/src/static/ferret-back-red.png" alt="" class="ferretDeck" />
 	</div>
 </div>
 
