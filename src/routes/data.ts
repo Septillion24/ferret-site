@@ -1,3 +1,5 @@
+import { base } from '$app/paths';
+
 export interface FerretData {
 	src: string;
 	name: string;
@@ -7,25 +9,25 @@ export interface FerretData {
 
 export const ferrets: FerretData[] = [
 	{
-		src: '/Noodle.png',
+		src: `${base}/Noodle.png`,
 		name: 'Noodle',
 		male: true,
 		birthdate: '3/1/2020'
 	},
 	{
-		src: '/Bear.png',
+		src: `${base}/Bear.png`,
 		name: 'Bear',
 		male: true,
 		birthdate: '1/9/2022'
 	},
 	{
-		src: '/Willow.png',
+		src: `${base}/Willow.png`,
 		name: 'Willow',
 		male: true,
 		birthdate: '12/12/2021'
 	},
 	{
-		src: '/Coco.png',
+		src: `${base}/Coco.png`,
 		name: 'Coco',
 		male: false,
 		birthdate: '6/17/2023'

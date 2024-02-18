@@ -2,6 +2,7 @@
 	import { ferrets } from './data';
 	import FerretCard from './ferretCard.svelte';
 	import { onMount } from 'svelte';
+    import { base } from '$app/paths';
 
 	let numFerrets: number = ferrets.length;
 	let currentFerretIndex: number = 1;
@@ -40,13 +41,13 @@
 		class="leftCard {currentFerretIndex === 0 ? 'emptyDeck' : 'fullDeck'}"
 		bind:this={ferretDeckLeft}
 	>
-		<img src="/src/static/ferret-back-blue.png" alt="" class="ferretDeck" />
+		<img src="{base}/ferret-back-blue.png" alt="" class="ferretDeck" />
 	</div>
 	<div
 		class="rightCard {currentFerretIndex === numFerrets - 1 ? 'emptyDeck' : 'fullDeck'}"
 		bind:this={ferretDeckRight}
 	>
-		<img src="/src/static/ferret-back-red.png" alt="" class="ferretDeck" />
+		<img src="{base}/ferret-back-red.png" alt="" class="ferretDeck" />
 	</div>
 </div>
 
