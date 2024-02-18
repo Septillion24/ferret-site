@@ -2,10 +2,10 @@
 	import { page } from '$app/stores';
 	const paths = {
 		Home: '/',
-		ferrets: '/ferrets',
+		ferrets: '/ferrets'
 	};
-    
 </script>
+
 <header>
 	{#each Object.entries(paths) as [name, route]}
 		<a href={route} class={$page.url.pathname === route ? 'active' : 'inactive'}>{name}</a>
@@ -17,7 +17,7 @@
 <style lang="scss">
 	$active-color: rgb(103, 122, 170);
 	$inactive-color: rgb(102, 106, 116);
-    $hover-color: rgb(13, 0, 83);
+	$hover-color: rgb(13, 0, 83);
 
 	header {
 		background-color: #282c31;
@@ -32,12 +32,18 @@
 	header > a:hover {
 		text-shadow: 1px 1px 5px $hover-color;
 		transition: 1s;
-		transition-timing-function: cubic-bezier(.24,.81,.3,.68);
+		transition-timing-function: cubic-bezier(0.24, 0.81, 0.3, 0.68);
 	}
 	.active {
 		color: $active-color;
 	}
 	.inactive {
 		color: $inactive-color;
+	}
+
+	:global(body) {
+		margin: 0px;
+		padding: 0px;
+		background-color: #34383f;
 	}
 </style>
