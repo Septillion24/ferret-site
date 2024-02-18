@@ -16,6 +16,7 @@
 <input type="number" bind:value={currentFerretIndex} />
 
 <div class="cardGroup" bind:this={cardGroup}>
+	
 	{#each ferrets as ferret, index}
 		<div
 			class="cardContainer
@@ -25,11 +26,15 @@
 			data-index="{index}
             "
 		>
-			{index}
-
 			<FerretCard data={ferret} />
 		</div>
 	{/each}
+    <div class="leftCard">
+		<img src="/ferret-back-blue.png" alt="" class="ferretDeck" />
+	</div>
+	<div class="rightCard">
+		<img src="/ferret-back-red.png" alt="" class="ferretDeck" />
+	</div>
 </div>
 
 <style>
@@ -49,6 +54,7 @@
 		transition: 1s;
 	}
 	.rightCard {
+        position:absolute;
 		transform: translateX(50vmin);
 		transition: 1s;
 	}
@@ -56,5 +62,10 @@
 		height: 90vh;
 		display: grid;
 		place-items: center;
+	}
+	.ferretDeck {
+		aspect-ratio: 2/3;
+		width: 20vmin;
+		border-radius: 20px;
 	}
 </style>
