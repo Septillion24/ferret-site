@@ -30,9 +30,12 @@
 	$transition-time: 0.2s;
 
 	.card {
+        aspect-ratio: 2/3;
 		width: inherit;
-		height: inherit;
+		height: auto;
 		cursor: pointer;
+        border-radius: 2vmin;
+        
 	}
 	.cardFace {
 		aspect-ratio: 2/3;
@@ -40,11 +43,12 @@
 		width: inherit;
 		position: absolute;
 		overflow: hidden;
-		border-radius: 2vmin;
+		border-radius: inherit;
 		font-family: Arial, Helvetica, sans-serif;
 		transition: $transition-time;
 		background-color: white;
 		transition-timing-function: linear;
+        box-shadow: .5vmin .5vmin .8vmin 0vmin rgba(0,0,0,0.75);
 	}
 
 	.front.notFlipped {
@@ -63,7 +67,6 @@
 	}
 	.notFlipped > .content {
 		transform: scaleX(0%);
-		// opacity:0;
 	}
 	img {
 		margin: auto;

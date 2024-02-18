@@ -55,6 +55,7 @@
 
 	.cardContainer {
 		width: $cardSize;
+        height: auto;
 		aspect-ratio: 2/3;
 		transform-origin: center;
 		position: absolute;
