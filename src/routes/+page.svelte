@@ -7,16 +7,23 @@
 	let currentFerretIndex: number = 1;
 	let cardGroup: HTMLDivElement;
 	let cardContainers: NodeListOf<ChildNode>;
+	let ferretDeckRight: HTMLDivElement;
+	let ferretDeckLeft: HTMLDivElement;
 	onMount(() => {
 		cardContainers = cardGroup.childNodes;
-		console.log(cardContainers.length);
+		ferretDeckLeft.addEventListener('click', handleLeftDeckClick);
+		ferretDeckRight.addEventListener('click', handleRightDeckClick);
 	});
+	function handleLeftDeckClick(event: MouseEvent) {
+		currentFerretIndex = currentFerretIndex === 0 ? currentFerretIndex : currentFerretIndex - 1;
+	}
+	function handleRightDeckClick(event: MouseEvent) {
+		currentFerretIndex =
+			currentFerretIndex === numFerrets - 1 ? currentFerretIndex : currentFerretIndex + 1;
+	}
 </script>
 
-<input type="number" bind:value={currentFerretIndex} />
-
 <div class="cardGroup" bind:this={cardGroup}>
-	
 	{#each ferrets as ferret, index}
 		<div
 			class="cardContainer
@@ -29,34 +36,42 @@
 			<FerretCard data={ferret} />
 		</div>
 	{/each}
-    <div class="leftCard">
+	<div
+		class="leftCard {currentFerretIndex === 0 ? 'emptyDeck' : 'fullDeck'}"
+		bind:this={ferretDeckLeft}
+	>
 		<img src="/ferret-back-blue.png" alt="" class="ferretDeck" />
 	</div>
-	<div class="rightCard">
+	<div
+		class="rightCard {currentFerretIndex === numFerrets - 1 ? 'emptyDeck' : 'fullDeck'}"
+		bind:this={ferretDeckRight}
+	>
 		<img src="/ferret-back-red.png" alt="" class="ferretDeck" />
 	</div>
 </div>
 
-<style>
+<style lang="scss">
+    $cardSize: 25vmin;
+
 	.cardContainer {
-		width: 20vmin;
+		width: $cardSize;
 		aspect-ratio: 2/3;
 		transform-origin: center;
 		position: absolute;
 		opacity: 0.5;
+		transition: 0.5s;
+		transition-timing-function: cubic-bezier(0.18, 0.63, 0.6, 0.95);
 	}
 	.leftCard {
+		position: absolute;
 		transform: translateX(-50vmin);
-		transition: 1s;
 	}
 	.active {
 		opacity: 1;
-		transition: 1s;
 	}
 	.rightCard {
-        position:absolute;
+		position: absolute;
 		transform: translateX(50vmin);
-		transition: 1s;
 	}
 	.cardGroup {
 		height: 90vh;
@@ -65,7 +80,17 @@
 	}
 	.ferretDeck {
 		aspect-ratio: 2/3;
-		width: 20vmin;
-		border-radius: 20px;
+		width: $cardSize;
+		border-radius: 2vmin;
+		visibility: visible;
+	}
+	.emptyDeck {
+		opacity: 0.5;
+        transition:0.2s;
+		cursor: not-allowed;
+	}
+	.fullDeck {
+		cursor: pointer;
+        transition:0.2s;
 	}
 </style>

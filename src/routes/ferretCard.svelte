@@ -27,7 +27,7 @@
 		background-color: black;
 		font-family: Arial, Helvetica, sans-serif;
 		color: rgba(255, 255, 255, 0.9);
-		border-radius: 20px;
+		border-radius: 2vmin;
         opacity: inherit;
     }
     .mainCard:hover .content{
