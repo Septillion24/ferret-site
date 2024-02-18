@@ -5,7 +5,7 @@
     import { base } from '$app/paths';
 
 	let numFerrets: number = ferrets.length;
-	let currentFerretIndex: number = 1;
+	let currentFerretIndex: number = 0;
 	let cardGroup: HTMLDivElement;
 	let cardContainers: NodeListOf<ChildNode>;
 	let ferretDeckRight: HTMLDivElement;
