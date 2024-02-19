@@ -11,34 +11,58 @@
 		<a href={route} class={$page.url.pathname === route ? 'active' : 'inactive'}>{name}</a>
 	{/each}
 </header>
-
-<slot />
+<div class="content">
+	<slot />
+</div>
 
 <style lang="scss">
 	$active-color: rgb(103, 122, 170);
 	$inactive-color: rgb(102, 106, 116);
 	$hover-color: rgb(13, 0, 83);
 
+	.content {
+		background-image: linear-gradient(rgba(255, 0, 0, 0), 80%, rgb(0, 0, 0));
+		background-repeat: no-repeat;
+		height: 110vh;
+	}
+	:root::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	:root::-webkit-scrollbar-thumb {
+		border-radius: 30px;
+		background: -webkit-gradient(linear, left top, left bottom, from(#c445eb), to(#e2001e));
+		box-shadow:
+			inset 2px 2px 2px rgba(255, 255, 255, 0.25),
+			inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+	}
+
+	:root::-webkit-scrollbar-track {
+		background-color: #fff;
+		border-radius: 10px;
+		background: linear-gradient(to right, #201c29, #201c29 1px, #100e17 1px, #100e17);
+	}
+
 	header {
 		background-color: #282c31;
 		padding: 16px;
 		font-family: sans-serif;
 		text-align: center;
-	}
-	header > a {
-		padding: 20px;
-		text-decoration: none;
-	}
-	header > a:hover {
-		text-shadow: 1px 1px 5px $hover-color;
-		transition: 1s;
-		transition-timing-function: cubic-bezier(0.24, 0.81, 0.3, 0.68);
-	}
-	.active {
-		color: $active-color;
-	}
-	.inactive {
-		color: $inactive-color;
+		a {
+			padding: 20px;
+			text-decoration: none;
+		}
+		a:hover {
+			text-shadow: 1px 1px 5px $hover-color;
+			transition: 1s;
+			transition-timing-function: cubic-bezier(0.24, 0.81, 0.3, 0.68);
+		}
+		.active {
+			color: $active-color;
+		}
+		.inactive {
+			color: $inactive-color;
+		}
 	}
 
 	:global(body) {
