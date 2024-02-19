@@ -26,14 +26,14 @@
 		height: 110vh;
 	}
 	:root::-webkit-scrollbar {
-		width: 10px;
+		width: 1.2vmin;
 	}
 
 	:root::-webkit-scrollbar-thumb {
 		border-radius: 30px;
-		background: -webkit-gradient(linear, left top, left bottom, from(#c445eb), to(#e2001e));
+		background: -webkit-gradient(linear, left top, left bottom, from(#0a0f16), to(#1b273b));
 		box-shadow:
-			inset 2px 2px 2px rgba(255, 255, 255, 0.25),
+			inset 2px 2px 2px rgba(255, 255, 255, 0.15),
 			inset -2px -2px 2px rgba(0, 0, 0, 0.25);
 	}
 
