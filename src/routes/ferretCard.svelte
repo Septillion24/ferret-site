@@ -30,12 +30,11 @@
 	$transition-time: 0.2s;
 
 	.card {
-        aspect-ratio: 2/3;
+		aspect-ratio: 2/3;
 		width: inherit;
 		height: auto;
 		cursor: pointer;
-        border-radius: 2vmin;
-        
+		border-radius: 2vmin;
 	}
 	.cardFace {
 		aspect-ratio: 2/3;
@@ -48,22 +47,26 @@
 		transition: $transition-time;
 		background-color: white;
 		transition-timing-function: linear;
-        box-shadow: .5vmin .5vmin .8vmin 0vmin rgba(0,0,0,0.75);
+		box-shadow: 0.5vmin 0.5vmin 0.8vmin 0vmin rgba(0, 0, 0, 0.75);
 	}
 
-	.front.notFlipped {
-		transform: scaleX(100%);
-		transition-delay: $transition-time;
+	.front {
+		&.notFlipped {
+			transform: scaleX(100%);
+			transition-delay: $transition-time;
+		}
+		&.flipped {
+			transform: scaleX(0);
+		}
 	}
-	.front.flipped {
-		transform: scaleX(0);
-	}
-	.back.notFlipped {
-		transform: scaleX(0);
-	}
-	.back.flipped {
-		transform: scaleX(100%);
-		transition-delay: $transition-time;
+	.back {
+		&.notFlipped {
+			transform: scaleX(0);
+		}
+		&.flipped {
+			transform: scaleX(100%);
+			transition-delay: $transition-time;
+		}
 	}
 	.notFlipped > .content {
 		transform: scaleX(0%);
