@@ -66,14 +66,14 @@
 	}
 	.leftCard {
 		position: absolute;
-		transform: translateX(-50vmin);
+		transform: translateX(-60vmin) translateY(5vmax) rotate(-20deg);
 	}
 	.active {
 		opacity: 1;
 	}
 	.rightCard {
 		position: absolute;
-		transform: translateX(50vmin);
+		transform: translateX(60vmin) translateY(5vmax) rotate(20deg);
 	}
 	.cardGroup {
 		height: 90vh;
