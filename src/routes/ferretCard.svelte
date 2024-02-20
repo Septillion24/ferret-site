@@ -4,9 +4,6 @@
 	import type { FerretData } from './data';
 
 	export let data: FerretData;
-	let src: string = data.src;
-	let name: string = data.name;
-	let birthdate: string = data.birthdate;
 	let flipped = false;
 	function handleFlipping() {
 		flipped = !flipped;
@@ -15,19 +12,54 @@
 
 <div class="card" on:click={handleFlipping} role="presentation">
 	<div class="cardFace back {flipped ? 'flipped' : 'notFlipped'}">
-        <h1>
-			{name}
+		<h1>
+			<img src={data.icon} alt="" />
+			{data.name}
+			{#if data.male}
+				<i class="fa-solid fa-mars" style="color:blue"></i>
+			{:else}
+				<i class="fa-solid fa-venus" style="color:pink"></i>
+			{/if}
 		</h1>
-		<p>{birthdate}</p>
-		<p>{name} is a good {data.male ? 'boy' : 'girl'}</p>
+
+		<div class="birthdate">
+			{data.birthdate}
+		</div>
+
+		<div></div>
 	</div>
 	<div class="cardFace front {flipped ? 'flipped' : 'notFlipped'}">
-		<img {src} alt="" />
+		<img src={data.src} alt="" />
 	</div>
 </div>
 
 <style lang="scss">
 	$transition-time: 0.2s;
+
+	.back {
+		* {
+			margin: 0;
+		}
+		img {
+			width: 3vmin;
+			height: auto;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+		h1 {
+			margin-top: 0.5vmin;
+			font-size: 2.6vmin;
+			text-align: center;
+		}
+		.birthdate {
+			border-bottom: 1px solid black;
+			font-size: 1.7vmin;
+			margin-top: 0.2vmin;
+			width: inherit;
+			text-align: center;
+		}
+	}
 
 	.card {
 		aspect-ratio: 2/3;
@@ -68,10 +100,9 @@
 			transition-delay: $transition-time;
 		}
 
-        p{
-            font-size: 1.5vmin;
-        }
-
+		p {
+			font-size: 1.5vmin;
+		}
 	}
 	.notFlipped > .content {
 		transform: scaleX(0%);
