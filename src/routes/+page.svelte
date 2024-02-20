@@ -2,7 +2,7 @@
 	import { ferrets } from './data';
 	import FerretCard from './ferretCard.svelte';
 	import { onMount } from 'svelte';
-    import { base } from '$app/paths';
+	import { base } from '$app/paths';
 
 	let numFerrets: number = ferrets.length;
 	let currentFerretIndex: number = 0;
@@ -41,22 +41,22 @@
 		class="leftCard {currentFerretIndex === 0 ? 'emptyDeck' : 'fullDeck'}"
 		bind:this={ferretDeckLeft}
 	>
-		<img src="{base}/ferret-back-blue.png" alt="" class="ferretDeck" />
+		<img src="{base}/ferret-back-blue.png" alt="" class="ferretDeck" draggable="false" />
 	</div>
 	<div
 		class="rightCard {currentFerretIndex === numFerrets - 1 ? 'emptyDeck' : 'fullDeck'}"
 		bind:this={ferretDeckRight}
 	>
-		<img src="{base}/ferret-back-red.png" alt="" class="ferretDeck" />
+		<img src="{base}/ferret-back-red.png" alt="" class="ferretDeck" draggable="false" />
 	</div>
 </div>
 
 <style lang="scss">
-    $cardSize: 25vmin;
+	$cardSize: 25vmin;
 
 	.cardContainer {
 		width: $cardSize;
-        height: auto;
+		height: auto;
 		aspect-ratio: 2/3;
 		transform-origin: center;
 		position: absolute;
@@ -70,7 +70,7 @@
 	}
 	.active {
 		opacity: 1;
-        scale: 125%;
+		scale: 125%;
 	}
 	.rightCard {
 		position: absolute;
@@ -86,14 +86,17 @@
 		width: $cardSize;
 		border-radius: 2vmin;
 		visibility: visible;
+		-webkit-user-select: none; 
+		-ms-user-select: none; 
+		user-select: none;
 	}
 	.emptyDeck {
 		opacity: 0.5;
-        transition:0.2s;
+		transition: 0.2s;
 		cursor: not-allowed;
 	}
 	.fullDeck {
 		cursor: pointer;
-        transition:0.2s;
+		transition: 0.2s;
 	}
 </style>
