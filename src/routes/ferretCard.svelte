@@ -26,7 +26,13 @@
 			{data.birthdate}
 		</div>
 
-		<div></div>
+		<div class="stats">
+			<table>
+				<tr>
+					<td> Atk: 23 </td><td> Def: 12 </td>
+				</tr>
+			</table>
+		</div>
 	</div>
 	<div class="cardFace front {flipped ? 'flipped' : 'notFlipped'}">
 		<img src={data.src} alt="" />
@@ -58,6 +64,19 @@
 			margin-top: 0.2vmin;
 			width: inherit;
 			text-align: center;
+		}
+
+		.stats {
+			table {
+				width: 100%;
+				border: 1px solid black;
+                border-collapse: collapse;
+                text-align: center;
+
+				td {
+					border: 1px solid black;
+				}
+			}
 		}
 	}
 
