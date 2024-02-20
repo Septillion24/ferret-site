@@ -4,9 +4,6 @@
 	import type { FerretData } from './data';
 
 	export let data: FerretData;
-	let src: string = data.src;
-	let name: string = data.name;
-	let birthdate: string = data.birthdate;
 	let flipped = false;
 	function handleFlipping() {
 		flipped = !flipped;
@@ -16,26 +13,79 @@
 <div class="card" on:click={handleFlipping} role="presentation">
 	<div class="cardFace back {flipped ? 'flipped' : 'notFlipped'}">
 		<h1>
-			{name}
+			<img src={data.icon} alt="" />
+			{data.name}
+			{#if data.male}
+				<i class="fa-solid fa-mars" style="color:blue"></i>
+			{:else}
+				<i class="fa-solid fa-venus" style="color:pink"></i>
+			{/if}
 		</h1>
-		<p>{birthdate}</p>
-		<p>{name} is a good {data.male ? 'boy' : 'girl'}</p>
+
+		<div class="birthdate">
+			{data.birthdate}
+		</div>
+
+		<div class="stats">
+			<table>
+				<tr>
+					<td> Atk: 23 </td><td> Def: 12 </td>
+				</tr>
+			</table>
+		</div>
 	</div>
 	<div class="cardFace front {flipped ? 'flipped' : 'notFlipped'}">
-		<img {src} alt="" />
+		<img src={data.src} alt="" />
 	</div>
 </div>
 
 <style lang="scss">
 	$transition-time: 0.2s;
 
+	.back {
+		* {
+			margin: 0;
+		}
+		img {
+			width: 3vmin;
+			height: auto;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+		h1 {
+			margin-top: 0.5vmin;
+			font-size: 2.6vmin;
+			text-align: center;
+		}
+		.birthdate {
+			border-bottom: 1px solid black;
+			font-size: 1.7vmin;
+			margin-top: 0.2vmin;
+			width: inherit;
+			text-align: center;
+		}
+
+		.stats {
+			table {
+				width: 100%;
+				border: 1px solid black;
+                border-collapse: collapse;
+                text-align: center;
+
+				td {
+					border: 1px solid black;
+				}
+			}
+		}
+	}
+
 	.card {
-        aspect-ratio: 2/3;
+		aspect-ratio: 2/3;
 		width: inherit;
 		height: auto;
 		cursor: pointer;
-        border-radius: 2vmin;
-        
+		border-radius: 2vmin;
 	}
 	.cardFace {
 		aspect-ratio: 2/3;
@@ -48,22 +98,30 @@
 		transition: $transition-time;
 		background-color: white;
 		transition-timing-function: linear;
-        box-shadow: .5vmin .5vmin .8vmin 0vmin rgba(0,0,0,0.75);
+		box-shadow: 0.5vmin 0.5vmin 0.8vmin 0vmin rgba(0, 0, 0, 0.75);
 	}
 
-	.front.notFlipped {
-		transform: scaleX(100%);
-		transition-delay: $transition-time;
+	.front {
+		&.notFlipped {
+			transform: scaleX(100%);
+			transition-delay: $transition-time;
+		}
+		&.flipped {
+			transform: scaleX(0);
+		}
 	}
-	.front.flipped {
-		transform: scaleX(0);
-	}
-	.back.notFlipped {
-		transform: scaleX(0);
-	}
-	.back.flipped {
-		transform: scaleX(100%);
-		transition-delay: $transition-time;
+	.back {
+		&.notFlipped {
+			transform: scaleX(0);
+		}
+		&.flipped {
+			transform: scaleX(100%);
+			transition-delay: $transition-time;
+		}
+
+		p {
+			font-size: 1.5vmin;
+		}
 	}
 	.notFlipped > .content {
 		transform: scaleX(0%);
@@ -77,18 +135,5 @@
 		background-size: cover;
 		// opacity: 0.8;
 		transition: 0.2s;
-	}
-	.content {
-		position: absolute;
-		top: 0px;
-		width: inherit;
-		height: inherit;
-		background-color: white;
-	}
-	.content > h1 {
-		text-align: center;
-	}
-	.content > p {
-		margin-left: 40px;
 	}
 </style>
