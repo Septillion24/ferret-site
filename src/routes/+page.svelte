@@ -70,6 +70,7 @@
 	}
 	.active {
 		opacity: 1;
+        scale: 125%;
 	}
 	.rightCard {
 		position: absolute;

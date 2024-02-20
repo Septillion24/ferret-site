@@ -15,7 +15,7 @@
 
 <div class="card" on:click={handleFlipping} role="presentation">
 	<div class="cardFace back {flipped ? 'flipped' : 'notFlipped'}">
-		<h1>
+        <h1>
 			{name}
 		</h1>
 		<p>{birthdate}</p>
@@ -67,6 +67,11 @@
 			transform: scaleX(100%);
 			transition-delay: $transition-time;
 		}
+
+        p{
+            font-size: 1.5vmin;
+        }
+
 	}
 	.notFlipped > .content {
 		transform: scaleX(0%);
@@ -80,18 +85,5 @@
 		background-size: cover;
 		// opacity: 0.8;
 		transition: 0.2s;
-	}
-	.content {
-		position: absolute;
-		top: 0px;
-		width: inherit;
-		height: inherit;
-		background-color: white;
-	}
-	.content > h1 {
-		text-align: center;
-	}
-	.content > p {
-		margin-left: 40px;
 	}
 </style>
