@@ -23,6 +23,9 @@
 			currentFerretIndex === numFerrets - 1 ? currentFerretIndex : currentFerretIndex + 1;
 	}
 </script>
+<svelte:head>
+    <title>{ferrets[currentFerretIndex].name}</title> 
+</svelte:head>
 
 <div class="cardGroup" bind:this={cardGroup}>
 	{#each ferrets as ferret, index}
