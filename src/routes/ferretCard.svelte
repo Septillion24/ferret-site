@@ -29,13 +29,21 @@
 		<div class="stats">
 			<table>
 				<tr>
-					<td> Atk: 23 </td><td> Def: 12 </td>
+					<td><i class="fa-solid fa-hand-fist" title="Attack"></i>: {data.atk} </td><td> <i class="fa-solid fa-shield-halved" title="Defense"></i>: {data.def} </td>
+				</tr>
+				<tr>
+					<td><i class="fa-solid fa-wind" title="Speed"></i>: {data.speed}</td><td> <i class="fa-solid fa-bolt" title="Stamina"></i>: {data.stamina}</td>
 				</tr>
 			</table>
 		</div>
+
+        <div class="description">
+            {data.description}
+        </div>
+
 	</div>
 	<div class="cardFace front {flipped ? 'flipped' : 'notFlipped'}">
-		<img src={data.src} alt="" />
+		<img src={data.src} alt="" draggable="false" />
 	</div>
 </div>
 
@@ -45,13 +53,14 @@
 	.back {
 		* {
 			margin: 0;
+            -webkit-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
 		}
 		img {
 			width: 3vmin;
 			height: auto;
-			-webkit-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
+			
 		}
 		h1 {
 			margin-top: 0.5vmin;
@@ -67,17 +76,22 @@
 		}
 
 		.stats {
-			table {
+            font-size: 1.7vmin;
+            table {
 				width: 100%;
 				border: 1px solid black;
-                border-collapse: collapse;
-                text-align: center;
+				border-collapse: collapse;
+				text-align: center;
 
 				td {
 					border: 1px solid black;
 				}
 			}
 		}
+        .description{
+            padding:0.5vmin;
+            font-size: 1.6vmin;
+        }
 	}
 
 	.card {
