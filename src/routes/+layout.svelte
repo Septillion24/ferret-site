@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 	const paths = {
 		Home: '/',
@@ -8,7 +9,7 @@
 
 <header>
 	{#each Object.entries(paths) as [name, route]}
-		<a href={route} class={$page.url.pathname === route ? 'active' : 'inactive'}>{name}</a>
+		<a href={`${base}/${route}`} class={$page.url.pathname === route ? 'active' : 'inactive'}>{name}</a>
 	{/each}
 </header>
 <div class="content">
