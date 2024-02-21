@@ -7,14 +7,14 @@
 	};
 </script>
 
-<header>
+<nav>
 	{#each Object.entries(paths) as [name, route]}
-		<a href={`${base}/${route}`} class={$page.url.pathname === route ? 'active' : 'inactive'}>{name}</a>
+		<a href={`${base}${route}`} class={$page.url.pathname === route ? 'active' : 'inactive'}>{name}</a>
 	{/each}
-</header>
-<div class="content">
+</nav>
+<!-- <div class="content"> -->
 	<slot />
-</div>
+<!-- </div> -->
 
 <style lang="scss">
 	$active-color: rgb(103, 122, 170);
@@ -44,7 +44,7 @@
 		background: linear-gradient(to right, #201c29, #201c29 1px, #100e17 1px, #100e17);
 	}
 
-	header {
+	nav {
 		background-color: #282c31;
 		padding: 16px;
 		font-family: sans-serif;
