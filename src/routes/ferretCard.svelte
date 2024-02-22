@@ -55,6 +55,13 @@
     $font-size: 3vmin;
 
 	.back {
+        &.notFlipped {
+			transform: scaleX(0);
+		}
+		&.flipped {
+			transform: scaleX(100%);
+			transition-delay: $transition-time;
+		}
 		* {
 			margin: 0;
 			-webkit-user-select: none;
@@ -96,7 +103,15 @@
 			font-size: $font-size - 1vmin;
 		}
 	}
-
+    .front {
+		&.notFlipped {
+			transform: scaleX(100%);
+			transition-delay: $transition-time;
+		}
+		&.flipped {
+			transform: scaleX(0);
+		}
+	}
 	.card {
 		aspect-ratio: 2/3;
 		width: inherit;
@@ -117,25 +132,7 @@
 		transition-timing-function: linear;
 		box-shadow: 0.5vmin 0.5vmin 0.8vmin 0vmin rgba(0, 0, 0, 0.75);
 	}
-
-	.front {
-		&.notFlipped {
-			transform: scaleX(100%);
-			transition-delay: $transition-time;
-		}
-		&.flipped {
-			transform: scaleX(0);
-		}
-	}
-	.back {
-		&.notFlipped {
-			transform: scaleX(0);
-		}
-		&.flipped {
-			transform: scaleX(100%);
-			transition-delay: $transition-time;
-		}
-	}
+	
 	img {
 		margin: auto;
 		height: 100%;

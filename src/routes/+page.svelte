@@ -30,7 +30,6 @@
 		deltaPercent = Math.min(deltaPercent, 0);
 		deltaPercent = Math.max(deltaPercent, -100);
 
-		// trackHorizontal.set(deltaPercent);
         $trackHorizontal = deltaPercent;
 		console.log(trackHorizontal);
 	}
@@ -77,7 +76,6 @@
 		left: 50%;
 		top: 50%;
 		gap: 50vmin;
-		// transform: ;
 	}
 
 	.cardContainer {
