@@ -132,13 +132,6 @@
 			transform: scaleX(100%);
 			transition-delay: $transition-time;
 		}
-
-		p {
-			font-size: 1.5vmin;
-		}
-	}
-	.notFlipped > .content {
-		transform: scaleX(0%);
 	}
 	img {
 		margin: auto;
