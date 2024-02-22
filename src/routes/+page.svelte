@@ -1,105 +1,99 @@
 <script lang="ts">
+	import { tweened } from 'svelte/motion';
 	import { ferrets } from './data';
 	import FerretCard from './ferretCard.svelte';
 	import { onMount } from 'svelte';
-	import { base } from '$app/paths';
+	import { cubicOut } from 'svelte/easing';
 
 	let numFerrets: number = ferrets.length;
 	let currentFerretIndex: number = 0;
 	let cardGroup: HTMLDivElement;
 	let cardContainers: NodeListOf<ChildNode>;
-	let ferretDeckRight: HTMLDivElement;
-	let ferretDeckLeft: HTMLDivElement;
+	let mouseDownPosition: number = 0;
+
+	let trackHorizontal = tweened(0, { duration: 500, easing: cubicOut });
+	let currentPosition = 0;
+
 	onMount(() => {
 		cardContainers = cardGroup.childNodes;
-		ferretDeckLeft.addEventListener('click', handleLeftDeckClick);
-		ferretDeckRight.addEventListener('click', handleRightDeckClick);
 	});
-	function handleLeftDeckClick(event: MouseEvent) {
-		currentFerretIndex = currentFerretIndex === 0 ? currentFerretIndex : currentFerretIndex - 1;
+
+	function handleMouseDown(event: MouseEvent): void {
+		mouseDownPosition = event.clientX;
 	}
-	function handleRightDeckClick(event: MouseEvent) {
-		currentFerretIndex =
-			currentFerretIndex === numFerrets - 1 ? currentFerretIndex : currentFerretIndex + 1;
+	function handleMouseMovememnt(event: MouseEvent): void {
+		if (mouseDownPosition === 0) return;
+		const mouseDelta = mouseDownPosition - event.clientX;
+		const maxDelta = window.innerWidth / 2;
+
+		let deltaPercent = (mouseDelta / maxDelta) * -100 + currentPosition;
+		deltaPercent = Math.min(deltaPercent, 0);
+		deltaPercent = Math.max(deltaPercent, -100);
+
+		// trackHorizontal.set(deltaPercent);
+        $trackHorizontal = deltaPercent;
+		console.log(trackHorizontal);
+	}
+	function handleMouseUp(): void {
+		mouseDownPosition = 0;
+		currentPosition = $trackHorizontal;
 	}
 </script>
+
 <svelte:head>
-    <title>{ferrets[currentFerretIndex].name}</title> 
+	<title>{ferrets[currentFerretIndex].name}</title>
 </svelte:head>
 
-<div class="cardGroup" bind:this={cardGroup}>
-	{#each ferrets as ferret, index}
-		<div
-			class="cardContainer
-            {index === currentFerretIndex ? 'active' : ''} 
-            {index < currentFerretIndex ? 'leftCard' : ''} 
-            {index > currentFerretIndex ? 'rightCard' : ''} "
-			data-index="{index}
-            "
-		>
-			<FerretCard data={ferret} />
-		</div>
-	{/each}
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<div
+	class="content"
+	on:mousedown={handleMouseDown}
+	on:mousemove={handleMouseMovememnt}
+	on:mouseup={handleMouseUp}
+>
 	<div
-		class="leftCard {currentFerretIndex === 0 ? 'emptyDeck' : 'fullDeck'}"
-		bind:this={ferretDeckLeft}
+		bind:this={cardGroup}
+		class="cardGroup"
+		style="transform: translate({$trackHorizontal}%, -50%)"
 	>
-		<img src="{base}/ferret-back-blue.png" alt="" class="ferretDeck" draggable="false" />
-	</div>
-	<div
-		class="rightCard {currentFerretIndex === numFerrets - 1 ? 'emptyDeck' : 'fullDeck'}"
-		bind:this={ferretDeckRight}
-	>
-		<img src="{base}/ferret-back-red.png" alt="" class="ferretDeck" draggable="false" />
+		{#each ferrets as ferret, index}
+			<div class="cardContainer">
+				<FerretCard data={ferret} />
+			</div>
+		{/each}
 	</div>
 </div>
 
 <style lang="scss">
-	$cardSize: 25vmin;
+	$cardSize: 35vmin;
+	.content {
+		height: 100vh;
+		width: 100%;
+	}
+	.cardGroup {
+		display: flex;
+		box-sizing: border-box;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		gap: 50vmin;
+		// transform: ;
+	}
 
 	.cardContainer {
 		width: $cardSize;
 		height: auto;
 		aspect-ratio: 2/3;
 		transform-origin: center;
-		position: absolute;
+		// position: absolute;
 		opacity: 0.5;
 		transition: 0.5s;
 		transition-timing-function: cubic-bezier(0.18, 0.63, 0.6, 0.95);
-	}
-	.leftCard {
-		position: absolute;
-		transform: translateX(-60vmin) translateY(5vmax) rotate(-20deg);
-	}
-	.active {
-		opacity: 1;
-		scale: 125%;
-	}
-	.rightCard {
-		position: absolute;
-		transform: translateX(60vmin) translateY(5vmax) rotate(20deg);
-	}
-	.cardGroup {
-		height: 90vh;
-		display: grid;
-		place-items: center;
-	}
-	.ferretDeck {
-		aspect-ratio: 2/3;
-		width: $cardSize;
-		border-radius: 2vmin;
-		visibility: visible;
-		-webkit-user-select: none; 
-		-ms-user-select: none; 
+		-moz-user-select: none;
+		-webkit-user-select: none;
 		user-select: none;
 	}
-	.emptyDeck {
-		opacity: 0.5;
-		transition: 0.2s;
-		cursor: not-allowed;
-	}
-	.fullDeck {
-		cursor: pointer;
-		transition: 0.2s;
+	:global(body) {
+		overflow: hidden;
 	}
 </style>

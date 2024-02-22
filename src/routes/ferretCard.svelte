@@ -29,18 +29,21 @@
 		<div class="stats">
 			<table>
 				<tr>
-					<td><i class="fa-solid fa-hand-fist" title="Attack"></i>: {data.atk} </td><td> <i class="fa-solid fa-shield-halved" title="Defense"></i>: {data.def} </td>
+					<td><i class="fa-solid fa-hand-fist" title="Attack"></i>: {data.atk} </td><td>
+						<i class="fa-solid fa-shield-halved" title="Defense"></i>: {data.def}
+					</td>
 				</tr>
 				<tr>
-					<td><i class="fa-solid fa-wind" title="Speed"></i>: {data.speed}</td><td> <i class="fa-solid fa-bolt" title="Stamina"></i>: {data.stamina}</td>
+					<td><i class="fa-solid fa-wind" title="Speed"></i>: {data.speed}</td><td>
+						<i class="fa-solid fa-bolt" title="Stamina"></i>: {data.stamina}</td
+					>
 				</tr>
 			</table>
 		</div>
 
-        <div class="description">
-            {data.description}
-        </div>
-
+		<div class="description">
+			{data.description}
+		</div>
 	</div>
 	<div class="cardFace front {flipped ? 'flipped' : 'notFlipped'}">
 		<img src={data.src} alt="" draggable="false" />
@@ -49,35 +52,35 @@
 
 <style lang="scss">
 	$transition-time: 0.2s;
+    $font-size: 3vmin;
 
 	.back {
 		* {
 			margin: 0;
-            -webkit-user-select: none;
+			-webkit-user-select: none;
 			-ms-user-select: none;
 			user-select: none;
 		}
 		img {
 			width: 3vmin;
 			height: auto;
-			
 		}
 		h1 {
 			margin-top: 0.5vmin;
-			font-size: 2.6vmin;
+			font-size: $font-size;
 			text-align: center;
 		}
 		.birthdate {
 			border-bottom: 1px solid black;
-			font-size: 1.7vmin;
+			font-size: $font-size - 0.9vmin;
 			margin-top: 0.2vmin;
 			width: inherit;
 			text-align: center;
 		}
 
 		.stats {
-            font-size: 1.7vmin;
-            table {
+			font-size: $font-size - 0.9vmin;
+			table {
 				width: 100%;
 				border: 1px solid black;
 				border-collapse: collapse;
@@ -88,10 +91,10 @@
 				}
 			}
 		}
-        .description{
-            padding:0.5vmin;
-            font-size: 1.6vmin;
-        }
+		.description {
+			padding: 0.5vmin;
+			font-size: $font-size - 1vmin;
+		}
 	}
 
 	.card {
@@ -142,5 +145,8 @@
 		background-size: cover;
 		// opacity: 0.8;
 		transition: 0.2s;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		user-select: none;
 	}
 </style>
