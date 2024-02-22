@@ -86,8 +86,8 @@
 		aspect-ratio: 2/3;
 		transform-origin: center;
 		// position: absolute;
-		opacity: 0.5;
-		transition: 0.5s;
+		// opacity: 0.5;
+		// transition: 0.5s;
 		transition-timing-function: cubic-bezier(0.18, 0.63, 0.6, 0.95);
 		-moz-user-select: none;
 		-webkit-user-select: none;
