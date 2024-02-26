@@ -132,7 +132,6 @@
 		transition-timing-function: linear;
 		box-shadow: 0.5vmin 0.5vmin 0.8vmin 0vmin rgba(0, 0, 0, 0.75);
 	}
-	
 	img {
 		margin: auto;
 		height: 100%;
