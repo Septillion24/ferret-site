@@ -30,7 +30,7 @@
 		deltaPercent = Math.min(deltaPercent, 0);
 		deltaPercent = Math.max(deltaPercent, -100);
 
-        $trackHorizontal = deltaPercent;
+		$trackHorizontal = deltaPercent;
 		console.log(trackHorizontal);
 	}
 	function handleMouseUp(): void {
@@ -68,6 +68,10 @@
 	.content {
 		height: 100vh;
 		width: 100%;
+		cursor: grab;
+		&:active {
+			cursor: grabbing;
+		}
 	}
 	.cardGroup {
 		display: flex;
