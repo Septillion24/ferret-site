@@ -7,11 +7,11 @@
 	};
 </script>
 
-<nav>
+<!-- <nav>
 	{#each Object.entries(paths) as [name, route]}
 		<a href={`${base}${route}`} class={$page.url.pathname === route ? 'active' : 'inactive'}>{name}</a>
 	{/each}
-</nav>
+</nav> -->
 <!-- <div class="content"> -->
 	<slot />
 <!-- </div> -->
