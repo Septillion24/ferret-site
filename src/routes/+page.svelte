@@ -4,12 +4,14 @@
 	import FerretCard from './ferretCard.svelte';
 	import { onMount } from 'svelte';
 	import { cubicOut } from 'svelte/easing';
+	import { base } from '$app/paths';
 
 	let numFerrets: number = ferrets.length;
 	let currentFerretIndex: number = 0;
 	let cardGroup: HTMLDivElement;
 	let cardContainers: NodeListOf<ChildNode>;
 	let mouseDownPosition: number = 0;
+	const backgroundImage = `${base}/ferret-background.png`;
 
 	let trackHorizontal = tweened(0, { duration: 500, easing: cubicOut });
 	let currentPosition = 0;
@@ -49,6 +51,7 @@
 	on:mousedown={handleMouseDown}
 	on:mousemove={handleMouseMovememnt}
 	on:mouseup={handleMouseUp}
+	style="background-image:url({backgroundImage});"
 >
 	<div
 		bind:this={cardGroup}
@@ -72,14 +75,21 @@
 		&:active {
 			cursor: grabbing;
 		}
+        background-repeat: no-repeat;
+        background-size: cover;
 	}
 	.cardGroup {
+		padding: 5vmin;
+		padding-left: 7vmin;
 		display: flex;
 		box-sizing: border-box;
 		position: absolute;
 		left: 50%;
 		top: 50%;
 		gap: 50vmin;
+        // border:1px solid black;
+        box-shadow: 0vmin 0vmin 1vmin black;
+        border-radius: 1vmin;
 	}
 
 	.cardContainer {
